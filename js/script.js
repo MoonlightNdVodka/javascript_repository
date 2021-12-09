@@ -380,61 +380,92 @@
 
 
 // ОБРАБОТЧИКИ СОБЫТИЙ 
-const btns = document.querySelectorAll('button');
-const overlay = document.querySelector('.overlay');
+// const btns = document.querySelectorAll('button');
+// const overlay = document.querySelector('.overlay');
 
-// btn.onclick = function() {
-//     alert('Click');
-// };//не совсем верный способ реализации, удалить его нельзя
-// при повторении кода действие перезапишется  \\
+// // btn.onclick = function() {
+// //     alert('Click');
+// // };//не совсем верный способ реализации, удалить его нельзя
+// // при повторении кода действие перезапишется  \\
 
-btns.addEventListener('click', () => {
-  // alert('Clic1k');
-});
-// btn.addEventListener('mouseenter', () => {
-//   alert ('Clic2k');
+// btns.addEventListener('click', () => {
+//   // alert('Clic1k');
 // });
-// event - обьекты события 
-//ВАЖНО!! event-ы передаются как аргументы в callback функцию
+// // btn.addEventListener('mouseenter', () => {
+// //   alert ('Clic2k');
+// // });
+// // event - обьекты события 
+// //ВАЖНО!! event-ы передаются как аргументы в callback функцию
 
-//
-let i = 0;
-const deleteElement = (element) => {
-  console.log(element.currentTarget);
-  console.log(element.type);
+// //
+// let i = 0;
+// const deleteElement = (element) => {
+//   console.log(element.currentTarget);
+//   console.log(element.type);
 
-  // i++;
+//   // i++;
   
-  // if(i==1){
-  // // удаление эвента
-  // btn.removeEventListener('click', deleteElement);
-  // }
-  // element.target.remove();
-};
+//   // if(i==1){
+//   // // удаление эвента
+//   // btn.removeEventListener('click', deleteElement);
+//   // }
+//   // element.target.remove();
+// };
 
-//Всплытие событий - это когда обработчик событий идет
-// от активного элемента выше по DOM-дереву
+// //Всплытие событий - это когда обработчик событий идет
+// // от активного элемента выше по DOM-дереву
 
-//Удаление обработчика с элемента по клику
-// btn.addEventListener('click', deleteElement);
-// overlay.addEventListener('click', deleteElement);
+// //Удаление обработчика с элемента по клику
+// // btn.addEventListener('click', deleteElement);
+// // overlay.addEventListener('click', deleteElement);
 
- btns.forEach(btn =>  {
-   //Самый правильный спопоб вешать одинаковые обработчики событий на несколько 
-   //одинаковых элементов сразу.
-     btn.addEventListener('click', deleteElement);
- });
+//  btns.forEach(btn =>  {
+//    //Самый правильный спопоб вешать одинаковые обработчики событий на несколько 
+//    //одинаковых элементов сразу.
+//      btn.addEventListener('click', deleteElement);
+//  });
 
-const link = document.querySelector('a');
-console.log(link);
+// const link = document.querySelector('a');
+// console.log(link);
 
-link.addEventListener('click', function(event) {
+// link.addEventListener('click', function(event) {
 
-  //метод "preventDefault" отменяет стандартное поведение элемента на странице, 
-  // и применяет к нему поведение, которое указано будет ниже
-    event.preventDefault();
+//   //метод "preventDefault" отменяет стандартное поведение элемента на странице, 
+//   // и применяет к нему поведение, которое указано будет ниже
+//     event.preventDefault();
 
-    console.log(event.target);
-});
+//     console.log(event.target);
+// });
+
+//НАВИГАЦИЯ ПО DOM дереву
+
+// console.log(document.head);
+// console.log(document.documentElement);
+
+// функция childNodes позволяет получить все элементы(ноды), которые находятся внутри родителя
+// console.log(document.body.childNodes);
+// console.log(document.body.firstChild);
+// console.log(document.body.firstElementChild);
+// console.log(document.body.lastChild);
+
+//parentNode выведет родительский элемент, в котором querySelector нашел обьект
+// console.log(document.querySelector('#current').parentNode.parentNode);
+// console.log(document.querySelector('#current').parentNode.parentElement);
+
+//  DATA-АТРИБУТЫ
+
+// что бы получить какой-либо атрибут html, мы ставим "[ ]"
+// console.log(document.querySelector('[data-current="3"]').nextElementSibling);
 
 
+//У каждой ноды есть свое nodeName, если в этом условии нода будет с именем текста, мы пропустим ее показ
+for (let node of document.body.childNodes) {
+
+  if (node.nodeName == '#text') {
+    continue;
+  }
+  if (node.nodeName == '#comment') {
+    continue;
+  }
+  console.log(node);
+}
