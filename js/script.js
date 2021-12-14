@@ -404,7 +404,7 @@
 //   console.log(element.type);
 
 //   // i++;
-  
+	
 //   // if(i==1){
 //   // // удаление эвента
 //   // btn.removeEventListener('click', deleteElement);
@@ -421,7 +421,8 @@
 
 //  btns.forEach(btn =>  {
 //    //Самый правильный спопоб вешать одинаковые обработчики событий на несколько 
-//    //одинаковых элементов сразу.
+//    //одинаковых элементов сразу. Т.к у querySelectorAll получаемые элементы это ПСЕВДОМАССИВ,
+// его мы можем использовать только перебирая каждый элемент через forEach
 //      btn.addEventListener('click', deleteElement);
 //  });
 
@@ -436,6 +437,7 @@
 
 //     console.log(event.target);
 // });
+
 
 //НАВИГАЦИЯ ПО DOM дереву
 
@@ -452,6 +454,7 @@
 // console.log(document.querySelector('#current').parentNode.parentNode);
 // console.log(document.querySelector('#current').parentNode.parentElement);
 
+
 //  DATA-АТРИБУТЫ
 
 // что бы получить какой-либо атрибут html, мы ставим "[ ]"
@@ -459,13 +462,141 @@
 
 
 //У каждой ноды есть свое nodeName, если в этом условии нода будет с именем текста, мы пропустим ее показ
-for (let node of document.body.childNodes) {
+// for (let node of document.body.childNodes) {
 
-  if (node.nodeName == '#text') {
-    continue;
-  }
-  if (node.nodeName == '#comment') {
-    continue;
-  }
-  console.log(node);
-}
+//   if (node.nodeName == '#text') {
+//     continue;
+//   }
+//   if (node.nodeName == '#comment') {
+//     continue;
+//   }
+//   console.log(node);
+// }
+
+//СОБЫТИЯ НА МОБИЛЬНЫХ УСТРОЙСТВАХ
+
+ //touchstart
+ //touchmove
+ //touchend
+ //touchenter - как только палец зашел на пределы этого элемента 
+ //touchleave - как только палец ушел с пределов этого элемента
+ //touchcancel  - точка соприкосновения больше не регистрируется на окне браузера
+
+// window.addEventListener('DOMContentLoaded', () => {
+// 	const box = document.querySelector('.box');
+
+// 	box.addEventListener('touchstart', (e) => {
+// 		e.preventDefault();
+// 		console.log('Start');
+// 		console.log(e.targetTouches);
+// 	});
+
+// 	box.addEventListener('touchmove', (e) => {
+// 		e.preventDefault();
+// 		console.log(e.targetTouches[0].pageX);
+// 	});
+
+// 	box.addEventListener('touchend', (e) => {
+// 		e.preventDefault();
+// 		console.log('End');
+// 	});
+
+// 	//Hammer.js - скрипт для добавления моб-го функционала
+
+// 	//touches - кол-во пальцев на экране
+// 	//targetTouches
+// 	//changedTouches - содержит список пальцев, котопый был убран
+// });
+
+
+// АССИНХРОННОСТЬ
+
+///* <script defer src="./js/script.js"></script> */
+// defer - говорит компилятору загружать скрипт в фоне, вместе с версткой не ожидая дозагрузки страницы
+// - такие скрипты будут всегда дожидаться полной дозагрузки ДОМ дерева html что бы начать выполнение
+
+///* <script async src="./js/script.js"></script> */
+// async - загужается так же в фоне, не ожидая дозагрузки, но начнет выполнятся как только загрузится сам,
+//не дожидаясь полной прогрузки ДОМ дерева
+
+// const p = document.querySelectorAll('div');
+// console.log(p); 
+
+// function loadScript(src) {
+// 	const script = document.createElement('script');
+// 	script.src = src;
+
+// 	//за счет отключенной ассинхронности, они будут выполняться друг за другом
+// 	script.async = false;
+// 	document.body.append(script);
+// }
+
+// loadScript("js/test.js");
+// loadScript("js/some.js");
+
+
+//CLASS LIST и ДЕЛЕГИРОВАНИЕ СОБЫТИЙ 
+
+// const btns = document.querySelectorAll('button');
+// const wrapper = document.querySelector ('.btn-block');
+
+// console.log(btns[0].classList);
+
+// // console.log(btns[0].classList.length);
+// // console.log(btns[0].classList.item(0));
+// // console.log(btns[1].classList.add('red', 'green'));
+// // console.log(btns[0].classList.remove('blue'));
+
+// // переключает классы, если класс такой есть - удаляет его с ээлемента
+// // если такой класс отсутствует в элементе - добавляет 
+// // console.log(btns[0].classList.toggle('blue'));
+// // console.log(btns[0].classList.item(0));
+
+// // if (btns[1].classList.contains('red')) {
+// //     console.log ('red!!');
+// // }ф
+
+// btns[0].addEventListener('click', () => {
+//     // if (!btns[1].classList.contains('red')) {
+//     //     btns[1].classList.add('red');
+//     // } else {
+//     //     btns[1].classList.remove('red');
+//     // }
+
+//     //делает то же самое
+//     btns[1].classList.toggle('red');
+// });
+
+// //выводит имена всех классов элемента в одну строчку
+// console.log(btns[0].className);
+
+// // делегирование - разграничение действий на определенных элементах 
+// // в зависимости от необходимого функционала 
+// // console.dir(wrapper);
+// wrapper.addEventListener('click', (event) => {
+
+//     //тут мы вешаем обработчкик на новые кнопки с классом red
+//     //которые мы создаем ниже
+//     if (event.target && event.target.matches("button.red")) {
+//         console.log('Hello');
+//     }
+//     // if (event.target && event.target.tagName == "BUTTON") {
+//     //     console.log('Hello');
+//     // }
+//     // if (event.target && event.target.classList.contains('some')) {
+//     //     console.log('Hello BLUE');
+//     // }
+//     // if (event.target && event.target.tagName == "DIV") {
+//     //     console.log('Hello DIV!!');
+//     // }
+// });
+// // Тут делегирование не работает - новые элементы не будут получать
+// //этот же класс который вешается для всех остальных кнопок.
+// // btns.forEach(btn => {
+// //     btn.addEventListener('click', () => {
+// //         console.log('Hello');
+// //     });
+// // });
+// const btn = document.createElement('button');
+// btn.classList.add('red');
+// wrapper.append(btn);
