@@ -600,3 +600,275 @@
 // const btn = document.createElement('button');
 // btn.classList.add('red');
 // wrapper.append(btn);
+
+
+// Временные скрипты 
+//  Этот скрипт вставляет в верстку таймер с обратным отсчетом
+	//Timer
+
+//     const deadline = '2021-12-19';
+
+//     function getTimeRemaining(endtime) {
+//         const t = Date.parse(endtime) - Date.parse(new Date()),
+//         //находит целое кол-во дней для таймера, остаток неполного дня отбрасывает
+//               days = Math.floor(t / (1000 * 60 * 60 * 24)),
+//               //находит кол-во часов для таймера, остаток в виде целых дней и секунд отбрасывает
+//               hours = Math.floor((t / (1000 * 60 * 60) % 24)),
+//               //остаток только минут
+//               minutes = Math.floor((t / 1000 / 60) % 60),
+//               seconds = Math.floor((t / 1000) % 60);
+
+//         return {
+//             'total': t,
+//             'days': days,
+//             'hours': hours,
+//             'minutes': minutes,
+//             'seconds': seconds
+//         };
+//     }
+
+//     function getZero(num) {
+//         if (num >= 0 && num < 10) {
+//             return `0${num}`;
+//         } else {
+//             return num;
+//         }
+//     }
+
+//     function setClock(selector, endtime) {
+//         const timer = document.querySelector(selector),
+//               days = timer.querySelector('#days'),
+//               hours = timer.querySelector('#hours'),
+//               minutes = timer.querySelector('#minutes'),
+//               seconds = timer.querySelector('#seconds'),
+//               timeInterval = setInterval(updateClock, 1000);
+
+//         updateClock();
+
+//         function updateClock() {
+//             const t = getTimeRemaining(endtime);
+
+//             days.innerHTML = getZero(t.days);
+//             hours.innerHTML = getZero(t.hours);
+//             minutes.innerHTML = getZero(t.minutes);
+//             seconds.innerHTML = getZero(t.seconds);
+
+//             if (t.total <= 0) {
+//                 clearInterval(timeInterval);
+//             }
+//         }
+//     }
+
+//     setClock ('.timer', deadline)
+// });
+
+
+//Функции-конструкторы
+//Нужны для создания различных по св-вам но одинаковым по шлаблону обьектов
+// function User(name, id) {           
+//     this.name = name;
+//     this.id = id;
+//     this.human = true;
+//     this.hello = function() {
+//         console.log("Hello! " + this.name);
+//     };
+   
+// }
+
+// User.prototype.exit = function() {
+//     console.log(`Пользователь ${this.name} ушел` );
+// };
+
+// let ivan = new User('Ivan', 28);    // 4)
+// let alex = new User ('Alex', 20);
+
+// ivan.exit();
+// ivan.hello();
+// alex.hello();
+
+
+//Контекст вызова This
+
+// 'use st rict'
+// function showThis(a, b) {    //1)
+//     console.log(this);
+//     function sum() {
+//         console.log(this);
+//         return a + b;
+//     }
+//     console.log(sum());
+// }
+// showThis(4, 5);
+
+
+// const obj = {   //2)
+//     a: 20,
+//     b: 15,
+//     sum: function() {
+//         //!!! функция ,которая запускается внутри метода, теряет контекст вызова
+//         function shout() {
+//             console.log(this);
+//         }
+//         shout();
+//     }
+// };
+// obj.sum();
+
+// function sayName(surname) {
+//     console.log(this);
+//     console.log(this.name + surname);
+// }
+
+// const user = {
+//     name: 'John'
+// }
+
+// sayName.call(user, 'Smith');
+// sayName.apply(user, ['Smith']);
+
+// function count(num) {
+//     return this*num;
+// }
+// // .bind создает новую функцию на основании сущ-ей функции 
+// const double = count.bind(2);
+// console.log(double(3));
+// console.log(double(13));
+
+// 1) Обычная функция: this = window, но если use strict - undefined
+// 2) Контекст у методов обьекта - сам обьект
+//  Если мы исползуем метод внутри обьекта,
+//  то контекст вызова всегда будет сслыаться на этот обьект
+// 3) this в конструкторах и классах - новый экземпляр обьекта
+//  Внутри функций-конструкторов контекстом вызова для всех методов 
+//  и св-в будет только что созданный новый обьект
+// 4) Ручная привзяка this:  call, apply, bind
+
+// const btn = document.querySelectorAll('button');
+
+// btn.forEach(item => {
+//     //в случае ображения к обьекту через коллбэк функцию обычного
+//     // формата( не стрелочную!!! =>), контекстом вызова будет являться 
+//     // изначальный обьект, у стрелочной функции нет констекста вызова, 
+//     // она будет брать его у родительского элемента
+//     item.addEventListener('click', function() {
+//         console.log(this);
+//         this.style.backgroundColor = 'red';
+//     });
+//     //ИЛИ
+//     // item.addEventListener('click',(e) => {
+//     //     e.target.style.backgroundColor = 'red';
+//     // });
+// }); 
+
+
+// const obj = {
+//     num: 5, 
+//     sayNumber: function() {
+//         const say = () => {
+//             console.log(this.num);
+//         };
+//         say();
+//     }
+// };
+// obj.sayNumber();
+
+
+//КЛАССЫ ES6
+ 
+// class Rectangle {
+//     //конструктор вызывается как только создается обьект класса 
+//     constructor(height, width) {
+//         this.height = height;
+//         this.width = width;
+//     }
+
+//     calcArea() {
+//         return this.height * this.width;
+//     }
+// }
+
+// class ColoredRectangWithText extends Rectangle {
+//     constructor(height, width, text, bgColor) {
+// //Метод super НАСЛЕДУЕТ указанный функционал от того класса, который мы наследуем
+//         super(height, width);
+//         this.text = text;
+//         this.bgColor = bgColor;
+//     }
+//     showMyProps() {
+//         console.log(`Текст: ${this.text}, цвет: ${this.bgColor}`);
+//     }
+// }
+
+// const div = new ColoredRectangWithText(25, 10, "Hello World", 'red');
+
+// div.showMyProps();
+// console.log(div.calcArea());
+
+
+
+// // REST operator ES6 - отдельные элементы обьединяет в один массив
+
+// const log = function (a, b ,...rest){
+//     //...rest - собирает отдельные сущности в массив
+//     console.log(a, b, rest);
+// }
+// log('basic', 'rest', 'operator', 'usage');
+
+// function calcOrDouble(number, basis = 2) {
+//     console.log(number * basis);
+// }
+
+// calcOrDouble(3);
+
+
+//JSON формат передачи данных
+
+// const persone = {
+//     name: 'Alex',
+//     tel : '+7413332321',
+//     parents: {
+//         mom: 'Olga',
+//         dad: 'Mike'
+//     }
+// };
+// //JSON.stringify преобразует данные в нужный  для браузера формат
+// //JSON.parse - разбирает формат JSON в нормальный код
+
+// //с помощью конструкции JSON.parse(JSON.stringify()) можно делать глубокое клонирование
+// // обьектов в js. Где будут копироваться и вложенные обьекты 
+// const clone = JSON.parse(JSON.stringify(persone));
+// clone.parents.mom = 'Ann';
+// console.log(persone);
+// console.log(clone);
+
+
+// //XMLHttpRequest
+// const inputRub = document.querySelector('#rub');
+// const inputUsd = document.querySelector('#usd');
+
+// inputRub.addEventListener('input', () => {
+//     const request = new XMLHttpRequest();
+//     //МЕТОДЫ ОБЬЕКТА XMLHttpRequest
+//     // этот метод собирает настройки которые помогут сделать запрос
+//     request.open('GET', 'js/current.json');
+//     request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+//     request.send();//body
+
+//     //readystatechange - отслеживает статус нашего запросса (readySstate) в текущий момент
+	
+//     request.addEventListener('load', () => {
+//         //если у нас статус 4(Done) и статус ответа 200 
+//         if (request.status === 200) {
+//             // console.log(request.response);
+//             const data = JSON.parse(request.response);
+//             inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
+//         } else {
+//             inputUsd.value = 'Error';
+//         }
+//     });
+//     // status: ответы в кодах от сервера
+//     // statusText
+//     // response - ответ от сервера 
+//     // responceText
+//     // readySstate - содержит текущее состояние запроса (0-4)
+// });
