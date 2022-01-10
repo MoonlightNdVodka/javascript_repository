@@ -1,3 +1,20 @@
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/js/main.js":
+/*!************************!*\
+  !*** ./src/js/main.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "one": () => (/* binding */ one),
+/* harmony export */   "two": () => (/* binding */ two),
+/* harmony export */   "sayHi": () => (/* binding */ sayHi),
+/* harmony export */   "default": () => (/* binding */ sayHiDef)
+/* harmony export */ });
 // "use strict"; //режим современного "строгого" кода
 // const personalMovieDB = {
 //     count: 0,
@@ -872,3 +889,449 @@
 //     // responceText
 //     // readySstate - содержит текущее состояние запроса (0-4)
 // });
+
+
+//PROMISE в JS
+//может выполнять последовательность действий, если произошли определенные условия
+
+// console.log('Запрос данных...');
+
+// const req = new Promise(function(resolve, reject) {
+
+// 	setTimeout(() => {
+// 		console.log('Подготовка данных...');
+
+// 		const product = {
+// 			name: 'TV',
+// 			price: 2000
+// 		};
+//  	 //эта функция запустится только если код вверху корректно отработал 		
+// 		resolve(product);
+// 	}, 2000);
+// });
+// //then отработает в случае удачного выполнения промиса
+// req.then((product) => {
+// 	const req2 = new Promise((resolve, reject) => {
+// 		setTimeout(() => {
+// 			product.status = 'order';
+// 			resolve(product);
+// 			// reject();
+// 		}, 2000);
+// 	});	
+// 	// при выполнении кода вызывается resolve, который обьявляется дальше в - then
+// 	// при не выполнении кода(ошибке) вызывается reject, который обьявляется дальше в - catch
+// }).then(data => {
+// 	data.modify = true;
+// 	return data;
+// }).then(data => {
+// 	console.log(data);
+// 	// .catch(() => {})
+// }).catch(() => {
+// 	console.error('Произошла ошибка');
+// 	// .finally(() => {}); - выполняется всегда, вне зависимости от исхода кода
+// }).finally(() => {
+// 	console.log('Finally');
+// });
+// //этот setTimeout запустится только если код вверху корректно отработал 
+
+// const test = time => {
+// 	return new Promise(resolve => {
+// 		setTimeout(() => resolve(), time);
+// 	});
+// };
+
+// // Promise.all - отрабатывает только когда все промисы до этого отработали, 
+// // если все корректно прошли - отработает .then(), если нет - .catch() 
+// Promise.all([test(1000), test(2000)]).then(() => {
+// 	console.log('All');
+// });
+
+// // Promise.race - отрабатывает  когда самый первый промис отработал.
+// Promise.race([test(1000), test(2000)]).then(() => {
+// 	console.log('All');
+// });
+
+
+// МЕТОДЫ ПЕРЕБОРА МАССИВОВ
+
+//forEach -  перебирает массив, но не возвращает новый массив
+
+//filter - возвращает новый массив отфильтрованный по функции
+// const names = ["Ivan", "Ann", "Ksenia", "Voldemart"];
+
+// const shortNames = names.filter(function(name){
+// 	return name.length < 5;
+// });
+
+// console.log (shortNames);
+
+// //map - позволяет взять исходный массив и изменить каждый элемент внутри него.
+// // Мы получим новый массив с измененными данными
+// const answers = ['IvAn', 'AnnA', 'HellO'];
+// const result = answers.map(item => item.toLowerCase());
+// // let answers1 = ['IvAn', 'AnnA', 'HellO'];
+// // answers1 = answers1.map(item => item.toLowerCase());
+// console.log (answers);
+// console.log (result);
+
+// //every - перебирает массив, если все элементы подходят по 
+// // условию колбэк функции, возращает - true, если же нет - false
+
+// //some - перебирает массив, если ходя бы один элемент подходит по 
+// // условию колбэк функции, возращает - true, если же нет - false
+// const someThing = [4, 'qwq', 'stersdf4'];
+// console.log(someThing.some(item => typeof(item) === 'number'));
+
+// console.log(someThing.every(item => typeof(item) === 'number'));
+
+// // reduce - схопывает массив в одно единое целое (метод перебора каждого элемента)
+// const nubmers = [4, 5, 1, 3, 2, 6];
+// // 			 0 + 4
+// // 				 4 +5
+// // 					5 +1
+// //если поставить после запятой элемент - он будет начальным при сложении
+// const res = nubmers.reduce((sum, current) => sum + current, 3);
+// console.log(res);
+// // text fields
+// const fruits = ['apple', 'cherry', 'strawberry'];
+// const fruitBag = fruits.reduce((sum, current) => `${sum}, ${current}`);
+// console.log(fruitBag);
+
+
+// //нужно вытащить имена людей отсюда
+// const obj = {
+// 	ivan: 'persone',
+// 	ann: 'persone',
+// 	dog: 'animal',
+// 	cat: 'animal'
+// };
+
+// //делает из обьекта матрицу, содержащую массивы
+// const newArr = Object.entries(obj)
+// //фильтрует и созает новый массив подходящих массивов по ключу "persone" 
+// .filter(item => item[1] === 'persone')
+// //выводит первые элементы (имена) из уже вновь созданного массива.
+// .map(item => item[0]);
+
+// console.log(newArr);
+
+
+// LOCAL STORAGE - это обьект, который встроен в браузеры. 
+//  И он может хранить различеные данные. 
+// Обьект существуют в рамках однго домена
+// и может хранить ограниченное кол-во данных(до 5 мб.) 
+//данные не сбрасываются при перезагрузке
+
+// window.localStorage
+// console.log('working...');
+
+// localStorage.setItem('number', 5);
+
+// // localStorage.removeItem('number');
+// // localStorage.clear();
+// console.log(localStorage.getItem('number'));
+
+// const checkbox = document.querySelector('#checkbox'),
+// 	  form = document.querySelector('form'),
+// 	  change = document.querySelector('#color');
+
+// if (localStorage.getItem('isChecked')) {
+// 	checkbox.checked = true;
+// 	// localStorage.removeItem('isChecked');
+// }
+// if (localStorage.getItem('bg') === 'changed') {
+// 	form.style.backgroundColor = 'red';
+// }
+
+// checkbox.addEventListener('change', () => {
+// 	localStorage.setItem('isChecked', true);
+// });
+
+
+// change.addEventListener('click', () => {
+// 	if (localStorage.getItem('bg') === 'changed') {
+// 		localStorage.removeItem('bg');
+// 		form.style.backgroundColor = 'white';
+// 	} else {
+// 		localStorage.setItem('bg', 'changed');
+// 		form.style.backgroundColor = 'red';
+// 	}
+// });
+
+// const persone = {
+// 	name: 'Alex',
+// 	age: 25
+// };
+
+// const serializedPersone = JSON.stringify(persone);
+// localStorage.setItem('alex', serializedPersone);
+
+// console.log(JSON.parse(localStorage.getItem('alex')));
+
+// REGULAR EXPRESSIONS - РЕГУЛЯРНЫЕ ВЫРАЖЕНИЯ
+// const ans = prompt('Enter your name');
+
+// const reg = /\d/;
+// console.log(ans.match(reg));
+
+
+// const str = 'My name is R2D2';
+
+// console.log(str.match(/\W/i));
+//Классические флаги регулярных выражений:
+// i - если мы хотим найти что-то вне зависимости от регистра
+// g - когда  мы хотим попробовать найти сразу несколько вхождений
+// m - включает многострочный режим
+
+// КЛАССЫ В РЕГУЛЯРНЫХ ВЫРАЖЕНИЯХ
+	// \d - мы ищем только цифры
+	// \w - мы ищем все слова
+	// \s - мы ищем только пробелы
+
+// ОБРАТНЫЕ КЛАССЫ 
+	// \D - найти все не числа
+	// \W - найти все не буквы
+
+// МЕТОДЫ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ
+// метод: test относится непосредственно к регуляркам,
+//  и работает только с ними. Выдает true или false
+// метод: search ищет первое вхождение в строке и возвращает логический ответ
+// метод: match ищет первое вхождение в строке и возвращает массив
+
+// такая запись значит - "/./" что мы забираем все символы из строки
+// это значит /\./ - мы экранируем символы с помощью "\"  
+
+// console.log(ans.search(reg));
+// const pass = prompt('Password');
+// console.log(pass.replace(/./g,  "*"));
+// console.log("12-34-56".replace(/-/g,  ":")); 
+
+
+// ГЕТТЕРЫ и СЕТТЕРЫ(свойства обьектов)
+
+// const persone = {
+// 	name: "Alex",
+// 	age: 24,
+
+// 	// get позволяет получить значение свойсвта этого обьекта
+// 	get userAge() {
+// 		return this.age;
+// 	},
+// 	// set позволяет получить изменить свойсвто этого обьекта
+// 	set userAge(num) {
+// 		this.age = num;
+// 	}
+// };
+
+// console.log(persone.userAge);
+// console.log(persone.userAge = 33);
+
+
+// ИНКАПСУЛЯЦИЯ
+
+// class User {
+// 	constructor(name, age) {
+// 		this.name = name;
+// 		//ниже мы создаем свойство обьекта, которое нельзя изменить извне
+// 		this._age = age;
+// 	}
+
+// 	#surname = 'PEPE';
+
+// 	get surName() {
+// 		return this.#surname;
+// 	}
+// 	set surnameSet(surname) {
+// 		this.#surname = surname;
+// 	}
+
+// 	say() {
+// 		console.log(`This user name: ${this.name} ${this.#surname}, age: ${this._age}`);
+// 	}
+// 	//c помощью геттеров и сеттеров мы закрыли доступ к изменению извне
+// 	get age() {
+// 		return this._age;
+// 	}
+
+// 	set age (age) {
+// 		if (typeof age === 'number' && age > 0 && age < 110) {
+// 			this._age = age;
+// 		} else {
+// 			console.log('Недопустимое значение');
+// 		}
+// 	}
+// }
+
+// const ivan = new User('Ivan', 27);
+
+// console.log(ivan.surName); 
+// ivan.surnameSet ='POPO';
+// console.log(ivan.surName); 
+
+// ivan.say();
+
+
+// Прием "МОДУЛЬ"
+
+// const number = 1;
+
+// //function declaration - для обьявления функции необходимо имя
+// // function ( ) {};
+
+// //анонимная самовызывающаяся функция:
+
+// (function() { // - function expression
+
+// 	// это позволяет уменьшить количество глобальных переменных, что улучшает кач-во кода 
+// 	const number = 2;
+// 	console.log (number);
+// 	console.log (number + 3 );
+// }());
+
+// console.log(number);
+
+// const user = (function(){ 
+// 	//мы создаем анонимную самовызывающуюся ф-ию, которая забирает методы и свойства,
+// 	// которые мы укажем, и которые нам нужны
+// 	const privat = function() {
+// 		console.log('I am privat!');
+// 	};
+// 	return {
+// 	//здесь мы констркируем новый обьект, в который передаем ссылку на приватную ф-ию
+// 		sayHello: privat	
+// 	};
+// }());
+
+// user.sayHello();
+
+
+//GULP - планировщик задач, 
+// мы можем создавать различные таски, выполняемые в оп. обстоятельствах
+
+//WEBPACK - сборщик модулей, может запускаться с помощью GULP 
+
+// function myModule() {
+// 	this.hello = function() {
+// 		console.log('hello');
+// 	};
+
+// 	this.goodbye = function() {
+// 		console.log('bye!');
+// 	};
+// }
+
+//CommonJs =- так экспортируются файлы
+// module.exports = myModule;
+
+//ES6 - так экспортируются файлы
+
+//именованный экспорт
+let one = 1;
+
+let two = 2;
+
+
+
+function sayHi(){
+	console.log('Hello');
+}
+
+//Экспорт по умолчанию должен быть только один
+function sayHiDef() {
+	console.log('Hello Default');
+}
+
+// можно в индексе подключать модулями файлы js, но нужно настраивать экспорты и полностью прописывать пути.
+// <script type='module' src="./dist/js/bundle.js"></script>
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!**************************!*\
+  !*** ./src/js/script.js ***!
+  \**************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main */ "./src/js/main.js");
+//импорт из module.exports = myModule;
+// const myModule = requre('../src/js/main.js');
+// const myModuleInstatce = new myModule();
+
+// myModuleInstatce.hello();
+// myModuleInstatce.goodbye();
+
+
+//импорт из ES6 для именнованного экспорта(где можно менять имя эксплртируемых переменных)
+// import { one as first, two } from "./main";
+
+
+// console.log(`${first} and ${two}`);
+console.log(`${_main__WEBPACK_IMPORTED_MODULE_0__.one} and ${_main__WEBPACK_IMPORTED_MODULE_0__.two}`);
+_main__WEBPACK_IMPORTED_MODULE_0__.sayHi();
+
+//неименнованный экспорт
+
+(0,_main__WEBPACK_IMPORTED_MODULE_0__["default"])();
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=bundle.js.map
