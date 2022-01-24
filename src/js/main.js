@@ -1,75 +1,8 @@
 // "use strict"; //режим современного "строгого" кода
-// const personalMovieDB = {
-//     count: 0,
-//     movies: {},
-//     actors: {},
-//     geners: [],
-//     privat: false,
-
-//     rememberMyFilms: function  () {
-//         for(let i = 0; i < 2; i++){
-
-//             const a = prompt("Один из последних просмотренных фильмов?", ""),
-//             b = prompt("На сколько оцените его", "");
-
-//             if (a != null && b != null && a != "" && b != "" && a.length < 30 ) {
-//             personalMovieDB.movies[a] = b;  
-//             } else {
-//                 i--;
-//             }
-//         }
-//     },
-
-//     start: function () {
-//         personalMovieDB.count = +prompt("Сколько фильмов уже посмотрели?", "");
-//         while (personalMovieDB.count == "" || personalMovieDB.count == null || isNaN(personalMovieDB.count)){
-//             personalMovieDB.count = +prompt("Сколько фильмов уже посмотрели?", "");
-
-//         }
-//     },
-
-//     detectPersonalLevel: function () {
-//         if (personalMovieDB.numberOfFilms < 10) {
-//             alert ("Просмотрено довольно мало фильмов");
-//            } else if (personalMovieDB.numberOfFilms >=10 && personalMovieDB.numberOfFilms <= 30) {
-//                alert ("Вы классический зритель");
-//            } else if (personalMovieDB.numberOfFilms > 30) {
-//                alert ("Вы киноман");
-//            } else {
-//                alert ("Произошла ошибка");
-//            }
-//     },
-//     showMyDB: function  (hidden){
-//         if (!hidden ){
-//             console.log (personalMovieDB);
-//         }
-//     },
-
-//     writeYourGenres: function  () {
-//         for(let i = 1; i <= 3; i++){
-//         let genre = prompt(`Ваш любимый жанр под номером ${i}`,"");
-//             if(genre == "" || genre == null) {
-//                 i--;
-//                 continue;
-//             } else {personalMovieDB.geners[i - 1 ] = genre;}
-//         }
-//         personalMovieDB.geners.forEach((item, i )=> {
-//             console.log(`Любимый жанр №${i+1} - это ${item}`);
-//         });
-
-//     },
-//     toggleVisibleMyDB: function () {
-//         if (personalMovieDB) {
-//             personalMovieDB.privat = false;
-//         } else {
-//             personalMovieDB.privat = true;
-//         }
-//     } 
-
-// };
 
 
-// //FUNCTION DECLARATION 
+//_1.0_// FUNCTION DECLARATION 
+
 // // //функции созданные таким образом существуют еще до того, как код начнет свое дейсвтие,
 // // т.к скрипт первым делом подгрузит все функции и var-ы, а потом начнет свою работу
 // // мы можем вызывать такие функции еще до того, как они будут обьявлены в коде 
@@ -79,7 +12,9 @@
 //     let gleb = 'User_Gleb';
 //   console.log(gleb);
 // }
-// // FUNCTION EXPRESSION
+
+//_1.1_// FUNCTION EXPRESSION
+
 // // функции, обьявленные таким образом, могут быть вызваны только после их обьявления
 // // myFunc();
 // const myFunc = function getUser() {
@@ -87,16 +22,16 @@
 // console.log(mark);
 // };
 // myFunc();
-// //СТРЕЛОЧНЫЕ ФУНКЦИИ
+
+//_1.2_//СТРЕЛОЧНЫЕ ФУНКЦИИ
+
 // // такие функции не имеют своего контекста вызова
 // const calc = (a, b) =>  a + b;
 //  console.log(calc(1,5));
 
+//_1.3_// CALLBACK ФУНКЦИИ
 
-
-// // CALLBACK функции, при их обьявлении, 
-// // выполняются строго после определенных действий, 
-
+// // при их обьявлении, выполняются строго после определенных действий, 
 // function learnJS(lang, callback) {
 //     console.log(`I'm learn: ${lang} `);
 //  //тут мы вызываем колбэк функцию, которая будет передана аргументом при вызове функции выше
@@ -126,10 +61,11 @@
 
 // options.makeTest();
 
-// //ДЕСТРУКТУРИЗАЦИЯ ОБЬЕКТА 
+
+//_2.0_//ДЕСТРУКТУРИЗАЦИЯ ОБЬЕКТА 
+
 // const {border, bg} = options.colors; 
 // console.log(border);
-
 
 // for (let key in options) {
 //     if (typeof (options[key]) === 'object') {
@@ -138,13 +74,11 @@
 //         }
 //     } else {
 //         console.log(`Свойство ${key} имеет значение ${options[key]}`);
-
 //     }
 // }
 
 // //Позволяет собирать значения ключей объекта в отдельный массив 
 // console.log(Object.keys(options));
-
 
 // const arr = [ 2, 4, 5, 7, 10];
 
@@ -153,7 +87,7 @@
 // });
 
 
-// // ПЕРЕДАЧА ПО ССЫЛКЕ, ГЛУБОКОЕ  И ПОВЕРХНОСТНОЕ КОПИРОВАНИЕ ОБЪЕКТОВ
+//_2.1_// ПЕРЕДАЧА ПО ССЫЛКЕ, ГЛУБОКОЕ  И ПОВЕРХНОСТНОЕ КОПИРОВАНИЕ ОБЪЕКТОВ
 
 // function copy(mainObj) {
 //     //эта функция реализует поверхностное копирование обьекта,
@@ -161,14 +95,12 @@
 //     //то это свойство не скоприруется,  
 //     //а создастся ссылка на это свойство в исходном обьекте
 //     let objCopy = {};
-
 //     let key;
 //     for (key in mainObj) {
 //         objCopy[key] = mainObj[key];
 //     }
 //     return objCopy;
 // }
-
 // const numbers = {
 //     a: 2,
 //     b: 5,
@@ -177,7 +109,6 @@
 //         y: 4
 //     }
 // };
-
 // const newNumbers = copy(numbers);
 
 // newNumbers.a = 10;
@@ -198,7 +129,6 @@
 // const clone = Object.assign({numbers}, add);
 // console.log(clone);
 
-
 // const oldArray = ['a', 'b', 'c'];
 // //slice - позволит создать новую поверхностную копию массива
 // const newArray = oldArray.slice();
@@ -209,7 +139,7 @@
 // console.log(oldArray); 
 
 
-// // SPREAD оператор: "..." вытаскивает элементы из массивов или обьектов 
+//_2.3_// SPREAD оператор: "..." вытаскивает элементы из массивов или обьектов 
 // const video = ['youtube', 'vimeo', 'rutube'],
 //       blogs = ['wordpress', 'livejournal', 'blogger'],
 //       internet = [...video, ...blogs, 'vk', 'facebook'];
@@ -240,7 +170,7 @@
 // const obj2 = {...obj1};
 // console.log(obj2);
 
-// // ООП, можно сказать что JS это прототипно-ориентированный язык.
+//______// ООП, можно сказать что JS это прототипно-ориентированный язык.
 // //В нем обьекты наследуют свойства от прототипов
 // const solder = {
 //     health: 400,
@@ -265,6 +195,7 @@
 // mike.sayHi();
 
 
+//_3.0_// ВОПРОССЫ
 
 // // Какое будет выведено значение: let x = 5; alert( x++ ); ?   
 // //   ОТВЕТ: 5 выведет, а потом увеличит до 6    
@@ -309,7 +240,9 @@
 // // ОТВЕТ: 2, 0 в лог-м контексте это falsе. "" тоже falsе, 2 - true, оператор или остановится на 2                        
 
 
-//ВСЕ ЭТИ ОБЬЕКТЫ ЭТО ПСЕВДО-ЭЛЕМЕНТЫ, ДЛЯ НИХ НЕТ МЕТОДОВ
+//_4.0_//ПСЕВДО-ЭЛЕМЕНТЫ
+
+// // ВСЕ ЭТИ ОБЬЕКТЫ ЭТО ПСЕВДО-ЭЛЕМЕНТЫ, ДЛЯ НИХ НЕТ МЕТОДОВ
 // //получает элемент по его ID
 // const box = document.getElementById('box');
 // console.log(box);
@@ -357,29 +290,30 @@
 //         item.style.backgroundColor = 'blue';
 //     });
 
-//     //СОЗДАЕТ элемент, но только внутри js, извне js его не изменить
+// // СОЗДАЕТ элемент, но только внутри js, извне js его не изменить
 // const div = document.createElement('div');
 // div.classList.add('black');
-// //СОЗДАЕТ новый блок в начале класса  wrapper
+// // СОЗДАЕТ новый блок в начале класса  wrapper
 // wrapper.append(div);
-// //СОЗДАЕТ блок в конце класса wrapper
+// // СОЗДАЕТ блок в конце класса wrapper
 // // wrapper.prepend(div);
 // // СОЗДАЕТ блок (до/после) конкретного эл.
 // // hearts[2].before(div);
-// //УДАЛЯЕТ определенный элемент в верстке
+// // УДАЛЯЕТ определенный элемент в верстке
 // // circles[0].remove();
-// //ЗАМЕНЯЕТ элементы из одного блока, другим 
+// // ЗАМЕНЯЕТ элементы из одного блока, другим 
 // hearts[0].replaceWith(circles[0]);
-// //позволяет вставлять как обычный текст в блок, так и 
+// // позволяет вставлять как обычный текст в блок, так и 
 // // html элементы внутрь блока 
 // div.innerHTML = "<h1>Hello:)</h1>";
-// //помещает внутрь блока текст
+// // помещает внутрь блока текст
 // // div.textContent = 'Hello!';
-// //позволяет вставить кусок html кода до/после элемента вначале или в конце
+// // позволяет вставить кусок html кода до/после элемента вначале или в конце
 // div.insertAdjacentHTML("beforebegin", '<h2>Hey!</h2>');
 
 
-// ОБРАБОТЧИКИ СОБЫТИЙ 
+//_5.0_// ОБРАБОТЧИКИ СОБЫТИЙ 
+
 // const btns = document.querySelectorAll('button');
 // const overlay = document.querySelector('.overlay');
 
@@ -412,7 +346,9 @@
 //   // element.target.remove();
 // };
 
-// //Всплытие событий - это когда обработчик событий идет
+
+//_5.1_//ВСПЛЫТИЕ СОБЫТИЙ - это когда обработчик событий идет
+
 // // от активного элемента выше по DOM-дереву
 
 // //Удаление обработчика с элемента по клику
@@ -439,7 +375,7 @@
 // });
 
 
-//НАВИГАЦИЯ ПО DOM дереву
+//_6.0_//НАВИГАЦИЯ ПО DOM дереву
 
 // console.log(document.head);
 // console.log(document.documentElement);
@@ -455,11 +391,10 @@
 // console.log(document.querySelector('#current').parentNode.parentElement);
 
 
-//  DATA-АТРИБУТЫ
+//_7.0_//DATA-АТРИБУТЫ
 
 // что бы получить какой-либо атрибут html, мы ставим "[ ]"
 // console.log(document.querySelector('[data-current="3"]').nextElementSibling);
-
 
 //У каждой ноды есть свое nodeName, если в этом условии нода будет с именем текста, мы пропустим ее показ
 // for (let node of document.body.childNodes) {
@@ -473,7 +408,8 @@
 //   console.log(node);
 // }
 
-//СОБЫТИЯ НА МОБИЛЬНЫХ УСТРОЙСТВАХ
+
+//_8.0_//СОБЫТИЯ НА МОБИЛЬНЫХ УСТРОЙСТВАХ
 
  //touchstart
  //touchmove
@@ -509,7 +445,7 @@
 // });
 
 
-// АССИНХРОННОСТЬ
+//_9.0_// АССИНХРОННОСТЬ
 
 ///* <script defer src="./js/script.js"></script> */
 // defer - говорит компилятору загружать скрипт в фоне, вместе с версткой не ожидая дозагрузки страницы
@@ -535,7 +471,7 @@
 // loadScript("js/some.js");
 
 
-//CLASS LIST и ДЕЛЕГИРОВАНИЕ СОБЫТИЙ 
+//_10.0_//CLASS LIST и ДЕЛЕГИРОВАНИЕ СОБЫТИЙ 
 
 // const btns = document.querySelectorAll('button');
 // const wrapper = document.querySelector ('.btn-block');
@@ -602,8 +538,9 @@
 // wrapper.append(btn);
 
 
-// Временные скрипты 
-//  Этот скрипт вставляет в верстку таймер с обратным отсчетом
+//_11.0_// ВРЕМЕННЫЕ СКРИПТЫ
+
+// // Этот скрипт вставляет в верстку таймер с обратным отсчетом
 	//Timer
 
 //     const deadline = '2021-12-19';
@@ -663,7 +600,8 @@
 // });
 
 
-//Функции-конструкторы
+//_12.0_// ФУНКЦИИ-КОНСТРУКТОРЫ
+
 //Нужны для создания различных по св-вам но одинаковым по шлаблону обьектов
 // function User(name, id) {           
 //     this.name = name;
@@ -672,7 +610,6 @@
 //     this.hello = function() {
 //         console.log("Hello! " + this.name);
 //     };
-   
 // }
 
 // User.prototype.exit = function() {
@@ -687,9 +624,9 @@
 // alex.hello();
 
 
-//Контекст вызова This
+//_13.0_//КОНТЕКСТ ВЫЗОВА "This"
 
-// 'use st rict'
+// 'use strict'
 // function showThis(a, b) {    //1)
 //     console.log(this);
 //     function sum() {
@@ -699,7 +636,6 @@
 //     console.log(sum());
 // }
 // showThis(4, 5);
-
 
 // const obj = {   //2)
 //     a: 20,
@@ -736,30 +672,29 @@
 
 // 1) Обычная функция: this = window, но если use strict - undefined
 // 2) Контекст у методов обьекта - сам обьект
-//  Если мы исползуем метод внутри обьекта,
-//  то контекст вызова всегда будет сслыаться на этот обьект
+//  	если мы исползуем метод внутри обьекта,
+//  	то контекст вызова всегда будет сслыаться на этот обьект
 // 3) this в конструкторах и классах - новый экземпляр обьекта
-//  Внутри функций-конструкторов контекстом вызова для всех методов 
-//  и св-в будет только что созданный новый обьект
+//  	Внутри функций-конструкторов контекстом вызова для всех методов 
+//  	и св-в будет только что созданный новый обьект
 // 4) Ручная привзяка this:  call, apply, bind
 
 // const btn = document.querySelectorAll('button');
 
 // btn.forEach(item => {
-//     //в случае ображения к обьекту через коллбэк функцию обычного
-//     // формата( не стрелочную!!! =>), контекстом вызова будет являться 
-//     // изначальный обьект, у стрелочной функции нет констекста вызова, 
-//     // она будет брать его у родительского элемента
-//     item.addEventListener('click', function() {
-//         console.log(this);
-//         this.style.backgroundColor = 'red';
-//     });
-//     //ИЛИ
-//     // item.addEventListener('click',(e) => {
-//     //     e.target.style.backgroundColor = 'red';
-//     // });
+//  // в случае ображения к обьекту через коллбэк функцию обычного
+//  // формата( не стрелочную!!! =>), контекстом вызова будет являться 
+//  // изначальный обьект, у стрелочной функции нет констекста вызова, 
+//  // она будет брать его у родительского элемента
+//  item.addEventListener('click', function() {
+//      console.log(this);
+//      this.style.backgroundColor = 'red';
+//  });
+//  //ИЛИ
+//  // item.addEventListener('click',(e) => {
+//  //     e.target.style.backgroundColor = 'red';
+//  // });
 // }); 
-
 
 // const obj = {
 //     num: 5, 
@@ -773,7 +708,7 @@
 // obj.sayNumber();
 
 
-//КЛАССЫ ES6
+//_14.0_// КЛАССЫ ES6
  
 // class Rectangle {
 //     //конструктор вызывается как только создается обьект класса 
@@ -804,9 +739,7 @@
 // div.showMyProps();
 // console.log(div.calcArea());
 
-
-
-// // REST operator ES6 - отдельные элементы обьединяет в один массив
+//_14.1_// REST operator ES6 - отдельные элементы обьединяет в один массив
 
 // const log = function (a, b ,...rest){
 //     //...rest - собирает отдельные сущности в массив
@@ -821,7 +754,7 @@
 // calcOrDouble(3);
 
 
-//JSON формат передачи данных
+//_14.2_//JSON формат передачи данных
 
 // const persone = {
 //     name: 'Alex',
@@ -842,13 +775,17 @@
 // console.log(clone);
 
 
-// //XMLHttpRequest
+//_14.3_// XMLHttpRequest
+
 // const inputRub = document.querySelector('#rub');
 // const inputUsd = document.querySelector('#usd');
 
 // inputRub.addEventListener('input', () => {
 //     const request = new XMLHttpRequest();
-//     //МЕТОДЫ ОБЬЕКТА XMLHttpRequest
+
+
+//     //_14.4_// МЕТОДЫ ОБЬЕКТА XMLHttpRequest
+
 //     // этот метод собирает настройки которые помогут сделать запрос
 //     request.open('GET', 'js/current.json');
 //     request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -874,11 +811,10 @@
 // });
 
 
-//PROMISE в JS
+//_15.0_// PROMISE в JS
+
 //может выполнять последовательность действий, если произошли определенные условия
-
 // console.log('Запрос данных...');
-
 // const req = new Promise(function(resolve, reject) {
 
 // 	setTimeout(() => {
@@ -935,20 +871,17 @@
 // });
 
 
-// МЕТОДЫ ПЕРЕБОРА МАССИВОВ
+//_16.0_// МЕТОДЫ ПЕРЕБОРА МАССИВОВ
 
-//forEach -  перебирает массив, но не возвращает новый массив
-
-//filter - возвращает новый массив отфильтрованный по функции
+// forEach -  перебирает массив, но не возвращает новый массив
+// filter - возвращает новый массив отфильтрованный по функции
 // const names = ["Ivan", "Ann", "Ksenia", "Voldemart"];
-
 // const shortNames = names.filter(function(name){
-// 	return name.length < 5;
+// return name.length < 5;
 // });
-
 // console.log (shortNames);
 
-// //map - позволяет взять исходный массив и изменить каждый элемент внутри него.
+// // map - позволяет взять исходный массив и изменить каждый элемент внутри него.
 // // Мы получим новый массив с измененными данными
 // const answers = ['IvAn', 'AnnA', 'HellO'];
 // const result = answers.map(item => item.toLowerCase());
@@ -957,10 +890,10 @@
 // console.log (answers);
 // console.log (result);
 
-// //every - перебирает массив, если все элементы подходят по 
+// // every - перебирает массив, если все элементы подходят по 
 // // условию колбэк функции, возращает - true, если же нет - false
 
-// //some - перебирает массив, если ходя бы один элемент подходит по 
+// // some - перебирает массив, если ходя бы один элемент подходит по 
 // // условию колбэк функции, возращает - true, если же нет - false
 // const someThing = [4, 'qwq', 'stersdf4'];
 // console.log(someThing.some(item => typeof(item) === 'number'));
@@ -999,11 +932,12 @@
 // console.log(newArr);
 
 
-// LOCAL STORAGE - это обьект, который встроен в браузеры. 
-//  И он может хранить различеные данные. 
+//_17.0_// LOCAL STORAGE - это обьект, который встроен в браузеры. 
+
+// И он может хранить различеные данные. 
 // Обьект существуют в рамках однго домена
 // и может хранить ограниченное кол-во данных(до 5 мб.) 
-//данные не сбрасываются при перезагрузке
+// данные не сбрасываются при перезагрузке
 
 // window.localStorage
 // console.log('working...');
@@ -1030,7 +964,6 @@
 // 	localStorage.setItem('isChecked', true);
 // });
 
-
 // change.addEventListener('click', () => {
 // 	if (localStorage.getItem('bg') === 'changed') {
 // 		localStorage.removeItem('bg');
@@ -1051,31 +984,37 @@
 
 // console.log(JSON.parse(localStorage.getItem('alex')));
 
-// REGULAR EXPRESSIONS - РЕГУЛЯРНЫЕ ВЫРАЖЕНИЯ
+
+//_18.0_// REGULAR EXPRESSIONS - РЕГУЛЯРНЫЕ ВЫРАЖЕНИЯ
+
 // const ans = prompt('Enter your name');
 
 // const reg = /\d/;
 // console.log(ans.match(reg));
 
-
 // const str = 'My name is R2D2';
-
 // console.log(str.match(/\W/i));
 //Классические флаги регулярных выражений:
 // i - если мы хотим найти что-то вне зависимости от регистра
 // g - когда  мы хотим попробовать найти сразу несколько вхождений
 // m - включает многострочный режим
 
-// КЛАССЫ В РЕГУЛЯРНЫХ ВЫРАЖЕНИЯХ
+
+//_19.0_//КЛАССЫ В РЕГУЛЯРНЫХ ВЫРАЖЕНИЯХ
+
 	// \d - мы ищем только цифры
 	// \w - мы ищем все слова
 	// \s - мы ищем только пробелы
 
-// ОБРАТНЫЕ КЛАССЫ 
+
+//_19.1_// ОБРАТНЫЕ КЛАССЫ 
+
 	// \D - найти все не числа
 	// \W - найти все не буквы
 
-// МЕТОДЫ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ
+
+//_19.2_// МЕТОДЫ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ
+
 // метод: test относится непосредственно к регуляркам,
 //  и работает только с ними. Выдает true или false
 // метод: search ищет первое вхождение в строке и возвращает логический ответ
@@ -1090,7 +1029,7 @@
 // console.log("12-34-56".replace(/-/g,  ":")); 
 
 
-// ГЕТТЕРЫ и СЕТТЕРЫ(свойства обьектов)
+//_19.3_// ГЕТТЕРЫ и СЕТТЕРЫ(свойства обьектов)
 
 // const persone = {
 // 	name: "Alex",
@@ -1110,7 +1049,7 @@
 // console.log(persone.userAge = 33);
 
 
-// ИНКАПСУЛЯЦИЯ
+//_20.0_// ИНКАПСУЛЯЦИЯ
 
 // class User {
 // 	constructor(name, age) {
@@ -1142,7 +1081,7 @@
 // 		} else {
 // 			console.log('Недопустимое значение');
 // 		}
-// 	}
+// }
 // }
 
 // const ivan = new User('Ivan', 27);
@@ -1150,18 +1089,17 @@
 // console.log(ivan.surName); 
 // ivan.surnameSet ='POPO';
 // console.log(ivan.surName); 
-
 // ivan.say();
 
 
-// Прием "МОДУЛЬ"
+//_21.0_// ПРИЕМ "МОДУЛЬ"
 
 // const number = 1;
 
-// //function declaration - для обьявления функции необходимо имя
-// // function ( ) {};
+// // function declaration - для обьявления функции необходимо имя
+// // function () {};
 
-// //анонимная самовызывающаяся функция:
+// // анонимная самовызывающаяся функция:
 
 // (function() { // - function expression
 
@@ -1188,10 +1126,10 @@
 // user.sayHello();
 
 
-//GULP - планировщик задач, 
+// GULP - планировщик задач, 
 // мы можем создавать различные таски, выполняемые в оп. обстоятельствах
 
-//WEBPACK - сборщик модулей, может запускаться с помощью GULP 
+// WEBPACK - сборщик модулей, может запускаться с помощью GULP 
 
 // function myModule() {
 // 	this.hello = function() {
@@ -1203,10 +1141,11 @@
 // 	};
 // }
 
-//CommonJs =- так экспортируются файлы
+// CommonJs =- так экспортируются файлы
 // module.exports = myModule;
 
-//ES6 - так экспортируются файлы
+
+//_22.0_// ES6 - так экспортируются файлы
 
 //именованный экспорт
 export let one = 1;
@@ -1228,7 +1167,7 @@ export default function sayHiDef() {
 // <script type='module' src="./dist/js/bundle.js"></script>
 
 
-// ОБРАБОТКА ОШИБОК
+//_23.0_// ОБРАБОТКА ОШИБОК
 
 try {
     console.log('Normal');
@@ -1248,12 +1187,15 @@ try {
 //ошибка вызовет остановку кода
 console.log('Still work');
 
-//Babel - трансформирует новый код для старых браузеров  
-//Polyfil - определенные участки кода, которые эмулируют поведение современного кода  
-//coreJS - стандартная библ для ДЖСа,
-//  которая содержит максимально полный набор полифилов
+
+// // МОДУЛИ ДЛЯ СБОРКИ ПРОЕКТОВ:
+
+// // Babel - трансформирует новый код для старых браузеров  
+// // Polyfil - определенные участки кода, которые эмулируют поведение современного кода  
+// // coreJS - стандартная библ для ДЖСа,
+// //которая содержит максимально полный набор полифилов
 // corejs: 3,
-//функция ниже помогает выбирать полифилы только те, которые исп-ся в коде
+// // функция ниже помогает выбирать полифилы только те, которые исп-ся в коде
 //useBuiltIns: "usage"
 
 
@@ -1276,8 +1218,6 @@ console.log('Still work');
 // Webpack
 // Vue
 
-
-
 //работа с jQuery
 // работа с библиотекой при разработке проекта с нуля не обязательна, большинство функций уже реализовано в нативном JS
 // при поддержке старых проектов знание библиотеки может понадобиться
@@ -1285,7 +1225,8 @@ console.log('Still work');
 // https://page2page.lohmach.info/index.php5/Заглавная_страница.html
 
 
-// Функции генераторы function*
+// ФУНКЦИИ ГЕНЕРАТОРЫ: function*
+
 // Генераторы являются функциями с возможностью выхода и последующего входа. 
 // Их контекст исполнения (значения переменных) сохраняется при последующих входах.
 function* generator() {
